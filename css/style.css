@@ -150,6 +150,7 @@ article .box-2 button {
   color: #fff;
   position: absolute;
   z-index: 999;
+  border-radius: 50%;
 }
 article .box-2 .img-2 {
   width: 250px;

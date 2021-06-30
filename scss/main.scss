@@ -69,7 +69,7 @@ article {
                 filter:blur(1.5px);
             }
             button {
-                animation: slide 0.6s linear forwards;;
+                animation: slide 0.6s linear forwards;
                 opacity: 1;
 
                 @keyframes slide{
@@ -89,32 +89,31 @@ article {
         height: 250px;
 
         button {
-            width: 120px;
-            height: 55px;
-            top: 75px;
-            background: #fff9;
-            border: 1px solid #fff;
-            transform: translate(50%);
+            width: 100px;
+            height:100px;
+            background: none;
+            border: 2px solid;
+            border-bottom-width: 4px;
+            font: inherit;
+            color: #fff;
             position: absolute;
-            opacity: 0;
-            transition: 0.8s;
-            pointer-events: none;
-            z-index: 20;
+            z-index: 999;
 
-            &.display {
-                top: 100px;
-                opacity: 1; 
-                background: #fff;
-            }
+            // &.display {
+            //     top: 100px;
+            //     opacity: 1; 
+            //     background: #fff;
+            // }
         }
        .img-2 {
         width: 250px;
         height: 250px;
-        background: url(../image/圖一.jpg)no-repeat;
-        background-size: cover;
+        background: #000;
+        // background: url(../image/圖一.jpg)no-repeat;
+        // background-size: cover;
 
         &:hover,&:active,&.active {
-            // filter: brightness(0.5);
+            filter: brightness(0.5);
             animation: jump 0.4s;
         }
 
@@ -143,27 +142,31 @@ article {
         width: 120px;
         height: 55px;
         top: 75px;
+        position: absolute;
         transform: translate(50%);
         background-size: 200% auto;
         color: #1269ea;
         box-shadow: 0 0 20px #eee;
-        border: none;
+        border: 1px solid #fff;
         border-radius: 5px;
         transition: 0.5s;
         animation: pulse 1s;
+        opacity: 0;
+        z-index: 999;
+        cursor: pointer;
 
         &:hover,&:focus {
             background-position: right center;
             color: #000;
-            box-shadow: 0 0 0 3em rgba(#fff,0);
+            box-shadow: 0 0 0 2em rgba(#fff,0);
     
             @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 var(--hover); }
+                0% { box-shadow: 0 0 0 0 ; }
               }
         }
     }
         .btn-3 {
-            background-image: linear-gradient(to right, #84fab0 0%, #fda085 100%);
+            background-image: linear-gradient(to right, #84fab0 0%,#fff 60%, #fda085 100%);
         }
 
        .img-3 {
@@ -171,10 +174,26 @@ article {
         height: 250px;
         background: url(../image/圖一.jpg)no-repeat;
         background-size: cover;
+        transition: 0.5s;
+        }
 
+        &:hover,&:active,.active {
+            .img-3 {
+                filter: brightness(0.5);
+            }
+            button {
+                animation: slide 0.6s linear forwards;
+                opacity: 1;
+
+                @keyframes slide{
+                    from{
+                        top:0;
+                    }
+                    to{
+                        top:100px;
+                    }
+                }
+            }
         }
     }
-
-    
-
 }

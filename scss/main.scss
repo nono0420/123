@@ -1,6 +1,6 @@
 body {
      width: 100%;
-     height: 1080px;
+     height: 1500px;
      background: #2c2c2c;
 }
 article {
@@ -31,10 +31,10 @@ article {
             z-index: 999;
             cursor: pointer;
             transition: 0.6s;
-        }
-        .button {
-           
-            text-transform: uppercase;
+
+            &:active,&:focus,&.active {
+                background: #fff;
+            }
         }
       
           .button:before {
@@ -47,7 +47,7 @@ article {
             left: 0;
           }
       
-          .button span {
+          span {
             mix-blend-mode: darken;
           }
       
@@ -88,50 +88,93 @@ article {
         width: 250px;
         height: 250px;
 
-        button {
-            width: 100px;
-            height:100px;
-            background: none;
-            border: 2px solid;
-            border-bottom-width: 4px;
-            font: inherit;
-            color: #fff;
+        .button {
+            width: 180px;
+            height: 120px;
+            display: inline-block;
             position: absolute;
+            left: 35px;
+            // transform: translate(20%);
+            top: 50px;
+            border: 2px solid #FFF;
+            overflow: hidden;
+            text-decoration: none;
+            font-size: 2em;
+            outline: none;
+            color: #FFF;
+            background: #000;
             z-index: 999;
-            border-radius: 50%;
 
-            // &.display {
-            //     top: 100px;
-            //     opacity: 1; 
-            //     background: #fff;
-            // }
+            &:hover,&:active,&.active {
+                 animation: jump 0.4s;
+            }
+            @keyframes jump {
+                0%,
+                100% {
+                  transform: scale(1, 1);
+                }
+              
+                33% {
+                  transform: scale(0.9, 1.1);
+                }
+              
+                66% {
+                  transform: scale(1.1, 0.9);
+                }
+              }
+        }
+        
+        .button span {
+            transition: 0.6s;
+            transition-delay: 0.2s;
+        }
+        
+        .button:before,
+        .button:after {
+            content: '';
+            position: absolute;
+            top: 0.67em;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transition: .4s,opacity .6s;
+            color: #fda085;
+        }
+        
+        /* :before */
+        
+        .button:before {
+            content: attr(data-hover);
+            transform: translate(-150%,0);
+        }
+        
+        /* :after */
+        
+        .button:after {
+            transform: translate(150%,0);
+        }
+        
+        .button:hover span,
+        .button:active span {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+        
+        .button:hover:before,
+        .button:active:after {
+            opacity: 1;
+            transform: translate(0,0);
+            transition-delay: 0.4s;
+        }
+        .button:active:before {
+            transform: translate(-200%,0);
+            transition-delay: 0s;
         }
        .img-2 {
         width: 250px;
         height: 250px;
         background: #000;
-        // background: url(../image/圖一.jpg)no-repeat;
-        // background-size: cover;
-
-        &:hover,&:active,&.active {
-            filter: brightness(0.5);
-            animation: jump 0.4s;
-        }
-
-        @keyframes jump {
-            0%,
-            100% {
-              transform: scale(1, 1);
-            }
-          
-            33% {
-              transform: scale(0.9, 1.1);
-            }
-          
-            66% {
-              transform: scale(1.1, 0.9);
-            }
-          }
         }
     }
 
@@ -156,14 +199,14 @@ article {
         z-index: 999;
         cursor: pointer;
 
-        &:hover,&:focus {
+        &:hover,&:focus,&:active {
             background-position: right center;
             color: #000;
-            box-shadow: 0 0 0 2em rgba(#fff,0);
+            box-shadow: 0 0 0 9px rgba(#fff,0);
     
-            @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 ; }
-              }
+            // @keyframes pulse {
+            //     0% { box-shadow: 0 0 0 10px ; }
+            //   }
         }
     }
         .btn-3 {
@@ -197,4 +240,221 @@ article {
             }
         }
     }
+
+    .box-4 {
+        width: 250px;
+        height: 250px;
+
+        button {
+            width: 160px;
+            height: 60px;
+            position: absolute;
+            background: #ffb5a2bf;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            transform: translate(25%);
+            top: 90px;
+
+            span{
+                display: block;
+                width: 100%;
+                height: 60px;
+                line-height: 60px;
+                transition: 0.6s;
+
+                &:hover,&:active,&.active {
+                    color: #fff;
+                    font-size: 20px;
+                }
+              }
+        }
+        button::before, button::after{
+            content:"";
+            width: 0;
+            height: 5px;
+            position: absolute;
+            transition: all 0.2s linear;
+            background: #69ddff;
+          }
+          
+          span::before, span::after{
+            content:"";
+            width:2px;
+            height:0;
+            position: absolute;
+            transition: all 0.2s linear;
+            background: #fff;
+          }
+          button:hover::before, button:hover::after{
+            width: 100%;
+          }
+          button:hover span::before, button:hover span::after{
+            height: 100%;
+          }
+
+          .btn-4::before, .btn-2::after{
+            transition-delay: 0s;
+          }
+          .btn-4 span::before, .btn-2 span::after{
+            transition-delay: 0.2s;
+          }
+          .btn-4::before{
+            right: 0;
+            top: 0;
+          }
+          .btn-4::after{
+            left: 0;
+            bottom: 0;
+          }
+          .btn-4 span::before{
+            left: 0;
+            top: 0;
+          }
+          .btn-4 span::after{
+            right: 0;
+            bottom: 0;
+          }
+          .btn-4:hover::before, .btn-4:hover::after{
+            transition-delay: 0.2s;
+          }
+          .btn-4:hover span::before, .btn-4:hover span::after{
+            transition-delay: 0s;
+          }
+
+        .img-4 {
+            width: 250px;
+            height: 250px;
+            background: url(../image/圖一.jpg)no-repeat;
+            background-size: cover;
+            transition: 0.5s;
+            }
+    }
+
+    .box-5 {
+        width: 250px;
+        height: 250px;
+
+        button {
+            width: 190px;
+            height: 190px;
+            position: absolute;
+            transform: translate(20%);
+            top: 20px;
+            background: white;
+            border-radius: 70%;
+            font-size: 20px;
+            letter-spacing: 2px;
+            // transition: 1s box-shadow;
+          }
+          
+        button:hover {
+            box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+          }
+          
+          button:hover::before, button:hover::after {
+            display: block;
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: #FDA8CF;
+            border-radius: 75px;
+            z-index: -1;
+            animation: 1s clock infinite;
+          }
+          
+          button:hover:after {
+            background: #F3CE5E;
+            animation: 2s counterclockwise infinite;
+          }
+          
+          @keyframes clock {
+            0% {
+              top: -5px;
+              left: 0;
+            }
+            12% {
+              top: -2px;
+              left: 2px;
+            }
+            25% {
+              top: 0;
+              left: 5px;    
+            }
+            37% {
+              top: 2px;
+              left: 2px;
+            }
+            50% {
+              top: 5px;
+              left: 0;    
+            }
+            62% {
+              top: 2px;
+              left: -2px;
+            }
+            75% {
+              top: 0;
+              left: -5px;
+            }
+            87% {
+              top: -2px;
+              left: -2px;
+            }
+            100% {
+              top: -5px;
+              left: 0;    
+            }
+          }
+          
+          @keyframes counterclockwise {
+            0% {
+              top: -5px;
+              right: 0;
+            }
+            12% {
+              top: -2px;
+              right: 2px;
+            }
+            25% {
+              top: 0;
+              right: 5px;    
+            }
+            37% {
+              top: 2px;
+              right: 2px;
+            }
+            50% {
+              top: 5px;
+              right: 0;    
+            }
+            62% {
+              top: 2px;
+              right: -2px;
+            }
+            75% {
+              top: 0;
+              right: -5px;
+            }
+            87% {
+              top: -2px;
+              right: -2px;
+            }
+            100% {
+              top: -5px;
+              right: 0;    
+            }
+          }
+        
+        .img-5 {
+            width: 250px;
+            height: 250px;
+            background: #000;
+            z-index: -2;
+            // background-size: cover;
+            // transition: 0.5s;
+            }
+    }
+
 }
